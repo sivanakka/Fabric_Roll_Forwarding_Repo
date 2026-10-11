@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "Legacy Transform dataflow"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c9032e2d-bdf4-b221-40cc-7af5d08de018"
+  }
+}

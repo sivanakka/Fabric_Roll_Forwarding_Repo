@@ -1,0 +1,22 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Legacy Transform dataflow",
+  "queryGroups": [],
+  "documentLocale": "en-GB",
+  "queriesMetadata": {
+    "Query": {
+      "queryId": "0e267c92-86aa-4e4a-91ec-225328bf0ac6",
+      "queryName": "Query"
+    }
+  },
+  "connections": [
+    {
+      "path": "https://azureopendatastorage.blob.core.windows.net/nyctlc/",
+      "kind": "AzureBlobs",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"c39c0583-5211-414f-9092-a47e052ffe29\"}"
+    }
+  ]
+}
