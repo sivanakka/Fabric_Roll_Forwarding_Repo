@@ -1,6 +1,6 @@
 section Section1;
 shared Exception_Claims = let
-    // ---- claim ID list from the DNA query ----
+    #Reference
     RawInput = PRS_CLAIMS,
 
     IdsList = 
