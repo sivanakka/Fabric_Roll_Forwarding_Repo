@@ -1,15 +1,72 @@
 {
   "formatVersion": "202502",
   "computeEngineSettings": {
+    "allowFastCopy": false,
     "allowModernEvaluationEngine": true
   },
   "name": "Legacy Transform dataflow",
-  "queryGroups": [],
+  "queryGroups": [
+    {
+      "id": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "name": "Fact",
+      "description": "",
+      "order": 1
+    },
+    {
+      "id": "855ada0b-d56c-4517-9ddc-bd2b1886b6cf",
+      "name": "Connections & Paras",
+      "description": ""
+    }
+  ],
   "documentLocale": "en-GB",
   "queriesMetadata": {
-    "Query": {
-      "queryId": "0e267c92-86aa-4e4a-91ec-225328bf0ac6",
-      "queryName": "Query"
+    "Exception_Claims": {
+      "queryId": "e72777ea-2a43-4afc-b6ce-da0f1c6c1ba7",
+      "queryName": "Exception_Claims",
+      "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "loadEnabled": false
+    },
+    "CLAIM_CREATION": {
+      "queryId": "a3cb10d8-6d86-400a-ba62-7422ee1dfad3",
+      "queryName": "CLAIM_CREATION",
+      "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "loadEnabled": false
+    },
+    "CLAIM_PRS": {
+      "queryId": "d58f693f-1db2-4af1-a0fd-54f86654e080",
+      "queryName": "CLAIM_PRS",
+      "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "loadEnabled": false
+    },
+    "PRS_CLAIMS": {
+      "queryId": "52fdc62d-b689-4b06-a871-bf27f5b7943c",
+      "queryName": "PRS_CLAIMS",
+      "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "loadEnabled": false
+    },
+    "Server_Id": {
+      "queryId": "37623722-3588-43b9-8bbc-5c02d9048e17",
+      "queryName": "Server_Id",
+      "queryGroupId": "855ada0b-d56c-4517-9ddc-bd2b1886b6cf",
+      "loadEnabled": false
+    },
+    "Chunk_Size": {
+      "queryId": "426e0da9-4f0e-48d9-a131-403fc5a2f2e9",
+      "queryName": "Chunk_Size",
+      "queryGroupId": "855ada0b-d56c-4517-9ddc-bd2b1886b6cf",
+      "loadEnabled": false
+    },
+    "Monthoffset": {
+      "queryId": "f02978ba-2a48-4163-8595-7d0c55fd2bfc",
+      "queryName": "Monthoffset",
+      "queryGroupId": "855ada0b-d56c-4517-9ddc-bd2b1886b6cf",
+      "loadEnabled": false
+    },
+    "DB_NAME": {
+      "queryId": "98fbd1bf-a219-48f6-98b8-99698705191d",
+      "queryName": "DB_NAME",
+      "queryGroupId": "855ada0b-d56c-4517-9ddc-bd2b1886b6cf",
+      "loadEnabled": false
     }
   },
   "connections": [
@@ -17,6 +74,32 @@
       "path": "https://azureopendatastorage.blob.core.windows.net/nyctlc/",
       "kind": "AzureBlobs",
       "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"c39c0583-5211-414f-9092-a47e052ffe29\"}"
+    },
+    {
+      "path": "https://raw.githubusercontent.com/mwitiderrick/insurancedata/master/insurance_claims.csv",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"f4585dd3-fe9c-449a-8c7e-1f95aac50722\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"7a4e80a7-de19-4e14-b9fd-759fd5d9a009\"}"
+    },
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;WAREHOUSE",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"f549e0ff-5622-4989-a2ab-4dad8af8409e\"}"
+    },
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.co4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.co4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Warehouse",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"85984cc6-dbff-4bdf-b5fa-43a130794b13\"}"
+    },
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Warehouse",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"ec0433f3-a962-4f9a-86fe-60bc036cbcf0\"}"
     }
-  ]
+  ],
+  "fastCombine": true
 }
