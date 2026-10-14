@@ -90,7 +90,7 @@ WHERE
 )
 in
     #"Added custom";
-shared CLAIM_CREATION = Table.Combine({CLAIM_CREATION_Base, Exception_Claims});
+shared CLAIM_CREATION_Final = Table.Combine({CLAIM_CREATION_Base, Exception_Claims});
 shared CLAIM_PRS = let
   Source = Fabric.Warehouse([HierarchicalNavigation = null]),
   #"Navigation 1" = Source{[workspaceId = "79c0354c-084d-4c2b-804b-4070eec93af3"]}[Data],

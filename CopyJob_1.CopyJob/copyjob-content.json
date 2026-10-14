@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "jobMode": "CDC",
+    "fullLoadBehavior": "Truncate",
+    "source": {
+      "type": "DataWarehouseTable",
+      "connectionSettings": {
+        "type": "DataWarehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+          "endPoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "ffd98f08-cc1f-8f06-4ca4-b590ec55c97e",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00",
+      "retry": 0
+    }
+  },
+  "activities": [
+    {
+      "id": "5d00af68-aa49-436d-ae47-fa3d2be1f6c4",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "bronze",
+            "table": "closed_claims_rpt"
+          },
+          "changeReadStrategy": "Batch",
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "upsertSettings": {
+            "keys": [
+              "claim_id"
+            ]
+          },
+          "writeBehavior": "Upsert",
+          "datasetSettings": {
+            "schema": "bronze",
+            "table": "closed_claims_rpt"
+          },
+          "applyVOrder": true,
+          "enableTimestampNtz": false,
+          "enableChangeDataFeed": true
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

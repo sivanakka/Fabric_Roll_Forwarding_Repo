@@ -49,6 +49,36 @@
       "queryId": "2a183532-0999-43ac-9dcb-bedea3dd1b15",
       "queryName": "gl_reported_ending",
       "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    },
+    "opening_claims_DataDestination": {
+      "queryId": "20741be5-09b6-49dc-a031-ed7e1ca5e50e",
+      "queryName": "opening_claims_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "new_added_claims_DataDestination": {
+      "queryId": "b2cfd248-6a1b-4e27-b09e-a26547d3eebc",
+      "queryName": "new_added_claims_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "closed_claims_DataDestination": {
+      "queryId": "afd04379-64e8-46d4-b1ea-14d610eccb2b",
+      "queryName": "closed_claims_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "deleted_purged_claims_DataDestination": {
+      "queryId": "e73d4ac1-8b98-4c11-8f4e-ec46c6d9c025",
+      "queryName": "deleted_purged_claims_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "gl_reported_ending_DataDestination": {
+      "queryId": "045f5db9-1643-450d-b6f1-cfed29bf1f54",
+      "queryName": "gl_reported_ending_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
     }
   },
   "connections": [
@@ -66,6 +96,11 @@
       "path": "https://onelake.dfs.fabric.microsoft.com/FabricDev/Lakehouse.Lakehouse/Files/Balance_Reports",
       "kind": "AzureDataLakeStorage",
       "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"680c907d-18e6-4950-9043-5bb435475fe0\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"7a4e80a7-de19-4e14-b9fd-759fd5d9a009\"}"
     }
   ]
 }

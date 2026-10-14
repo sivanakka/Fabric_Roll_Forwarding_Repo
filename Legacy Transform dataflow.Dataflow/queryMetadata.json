@@ -32,9 +32,9 @@
       "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
       "loadEnabled": false
     },
-    "CLAIM_CREATION": {
+    "CLAIM_CREATION_Final": {
       "queryId": "be4801d4-45b5-4ab4-81cb-d906bb6d0b08",
-      "queryName": "CLAIM_CREATION",
+      "queryName": "CLAIM_CREATION_Final",
       "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
       "loadEnabled": false
     },
