@@ -1,0 +1,89 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Balance_Sys_Src",
+  "queryGroups": [
+    {
+      "id": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "name": "SRC",
+      "description": "",
+      "order": 1
+    },
+    {
+      "id": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "name": "Connections & Paras",
+      "description": "",
+      "order": 1
+    },
+    {
+      "id": "51f77719-014b-479c-a46c-17991c406075",
+      "name": "RPT",
+      "description": ""
+    }
+  ],
+  "documentLocale": "en-GB",
+  "queriesMetadata": {
+    "opening_claims": {
+      "queryId": "f1936521-8867-48ce-9267-68748f827835",
+      "queryName": "opening_claims",
+      "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "loadEnabled": false
+    },
+    "Server_Id": {
+      "queryId": "d88d4dbe-0e5d-40c0-839f-cb8ecbbdf77f",
+      "queryName": "Server_Id",
+      "queryGroupId": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "loadEnabled": false
+    },
+    "Monthoffset": {
+      "queryId": "d5998ab9-67a2-41b1-86c8-45a60e85a54f",
+      "queryName": "Monthoffset",
+      "queryGroupId": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "loadEnabled": false
+    },
+    "DB_NAME": {
+      "queryId": "a7ef11d1-9099-4611-a6f7-4851bb308161",
+      "queryName": "DB_NAME",
+      "queryGroupId": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "loadEnabled": false
+    },
+    "new_added_claims": {
+      "queryId": "666a7666-8678-4eb9-8b26-0266ba45511a",
+      "queryName": "new_added_claims",
+      "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "loadEnabled": false
+    },
+    "closed_claims": {
+      "queryId": "488c53ca-42a1-4e25-aa10-c0e5dbd5bcf2",
+      "queryName": "closed_claims",
+      "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "loadEnabled": false
+    },
+    "deleted_purged_claims": {
+      "queryId": "a114e796-a6d7-473b-a12b-4d9fadaa7fee",
+      "queryName": "deleted_purged_claims",
+      "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "loadEnabled": false
+    },
+    "gl_reported_ending": {
+      "queryId": "c52868cb-a8ed-48b4-a606-9900f75dbe63",
+      "queryName": "gl_reported_ending",
+      "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;WAREHOUSE",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"f549e0ff-5622-4989-a2ab-4dad8af8409e\"}"
+    },
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Warehouse",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"ec0433f3-a962-4f9a-86fe-60bc036cbcf0\"}"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Balance_Sys_Src",
+  "queryGroups": [
+    {
+      "id": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "name": "Connections & Paras",
+      "description": ""
+    },
+    {
+      "id": "51f77719-014b-479c-a46c-17991c406075",
+      "name": "RPT",
+      "description": "",
+      "order": 1
+    }
+  ],
+  "documentLocale": "en-GB",
+  "queriesMetadata": {
+    "Data_Lake_Path": {
+      "queryId": "d88d4dbe-0e5d-40c0-839f-cb8ecbbdf77f",
+      "queryName": "Data_Lake_Path",
+      "queryGroupId": "816b3a15-f4a5-45f6-aa52-259d5f11a08c",
+      "loadEnabled": false
+    },
+    "opening_claims": {
+      "queryId": "f05c1082-0cd6-488a-836e-6985af45bfcd",
+      "queryName": "opening_claims",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    },
+    "new_added_claims": {
+      "queryId": "493e86f2-2369-4819-9a7c-86034bd1f830",
+      "queryName": "new_added_claims",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    },
+    "closed_claims": {
+      "queryId": "dc10fbbb-f664-41bc-bdcf-ed3a4f7f46d2",
+      "queryName": "closed_claims",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    },
+    "deleted_purged_claims": {
+      "queryId": "18aa2cc5-a929-4036-a5a6-eefecf84548b",
+      "queryName": "deleted_purged_claims",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    },
+    "gl_reported_ending": {
+      "queryId": "2a183532-0999-43ac-9dcb-bedea3dd1b15",
+      "queryName": "gl_reported_ending",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
+    }
+  },
+  "connections": [
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;WAREHOUSE",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"f549e0ff-5622-4989-a2ab-4dad8af8409e\"}"
+    },
+    {
+      "path": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Warehouse",
+      "kind": "SQL",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"ec0433f3-a962-4f9a-86fe-60bc036cbcf0\"}"
+    },
+    {
+      "path": "https://onelake.dfs.fabric.microsoft.com/FabricDev/Lakehouse.Lakehouse/Files/Balance_Reports",
+      "kind": "AzureDataLakeStorage",
+      "connectionId": "{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"680c907d-18e6-4950-9043-5bb435475fe0\"}"
+    }
+  ]
+}

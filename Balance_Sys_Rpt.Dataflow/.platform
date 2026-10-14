@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "Balance_Sys_Rpt"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0c1f5e7e-b134-85be-474c-9062ceac87c2"
+  }
+}
