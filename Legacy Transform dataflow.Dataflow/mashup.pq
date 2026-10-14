@@ -1,6 +1,5 @@
 section Section1;
 shared Exception_Claims = let
-    #Reference
     RawInput = PRS_CLAIMS,
 
     IdsList = 
