@@ -43,10 +43,17 @@ INNER JOIN (SELECT LTRIM(RTRIM(value)) AS CLCL_ID FROM STRING_SPLIT(@p1, '|')) f
 
     Combined = if List.IsEmpty(Results)
         then #table({}, {})
-        else Table.Combine(Results)
+        else Table.Combine(Results),
+
+    WithMonthFlag = Table.AddColumn(
+        Combined,
+        "Month_Flag",
+        each if Date.IsInPreviousMonth([CLM_LAST_ACT_DT]) then "Prev Month" else "Prior Month",
+        type text
+    )
 in
-    Combined;
-shared CLAIM_CREATION = let
+    WithMonthFlag;
+shared CLAIM_CREATION_Base = let
     Source = Sql.Database(Server_Id,DB_NAME),
     RunQuery = Value.NativeQuery(
         Source, 
@@ -83,6 +90,7 @@ WHERE
 )
 in
     #"Added custom";
+shared CLAIM_CREATION = Table.Combine({CLAIM_CREATION_Base, Exception_Claims});
 shared CLAIM_PRS = let
   Source = Fabric.Warehouse([HierarchicalNavigation = null]),
   #"Navigation 1" = Source{[workspaceId = "79c0354c-084d-4c2b-804b-4070eec93af3"]}[Data],
@@ -101,7 +109,7 @@ in
 shared PRS_CLAIMS = let
   Source = CLAIM_PRS,
   #"Removed columns" = Table.RemoveColumns(Source, {"SCCF_ID", "APPVT_AMT", "EDIT_DT", "OPEN_CLS_IND", "DISP_CD", "Month_Flag", "Flag"}),
-  #"Merged queries" = Table.NestedJoin(#"Removed columns", {"CLAIM_ID"}, CLAIM_CREATION, {"CLAIM_ID"}, "CLAIM_CREATION", JoinKind.LeftAnti),
+    #"Merged queries" = Table.NestedJoin(#"Removed columns", {"CLAIM_ID"}, CLAIM_CREATION_Base, {"CLAIM_ID"}, "CLAIM_CREATION", JoinKind.LeftAnti),
   #"Removed columns 1" = Table.RemoveColumns(#"Merged queries", {"CLAIM_CREATION"}),
   #"Converted to list" = #"Removed columns 1"[CLAIM_ID]
 in

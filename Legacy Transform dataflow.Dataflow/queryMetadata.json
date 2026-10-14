@@ -26,8 +26,14 @@
       "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
       "loadEnabled": false
     },
-    "CLAIM_CREATION": {
+    "CLAIM_CREATION_Base": {
       "queryId": "a3cb10d8-6d86-400a-ba62-7422ee1dfad3",
+      "queryName": "CLAIM_CREATION_Base",
+      "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
+      "loadEnabled": false
+    },
+    "CLAIM_CREATION": {
+      "queryId": "be4801d4-45b5-4ab4-81cb-d906bb6d0b08",
       "queryName": "CLAIM_CREATION",
       "queryGroupId": "76b3acb0-4d81-4e01-874c-cc1eee0c4fe6",
       "loadEnabled": false
