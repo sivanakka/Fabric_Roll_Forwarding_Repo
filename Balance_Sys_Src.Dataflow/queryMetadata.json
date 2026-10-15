@@ -63,38 +63,38 @@
       "queryName": "gl_reported_ending",
       "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b"
     },
-    "opening_claims_DataDestination": {
-      "queryId": "80e8521f-2504-4f33-b5d2-5dd44d1143a0",
-      "queryName": "opening_claims_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
     "Dynamic_destination_demo": {
       "queryId": "c5b134d1-3fbe-470e-aee6-6bf914c7d51c",
       "queryName": "Dynamic_destination_demo",
       "queryGroupId": "3e3d1f9c-f939-45c9-bc05-aa3b7b539c5b",
       "loadEnabled": false
     },
-    "closed_claims_DataDestination": {
-      "queryId": "eaf257f2-f2a8-446a-bee3-f4e1dec53660",
-      "queryName": "closed_claims_DataDestination",
+    "opening_claims_DataDestination": {
+      "queryId": "85320192-000a-43d4-affb-4309b592c119",
+      "queryName": "opening_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "new_added_claims_DataDestination": {
-      "queryId": "c18fac60-be79-4b81-93fe-53beae54fa34",
+      "queryId": "2961cf52-d548-4cac-b435-36c0f6c9a3ad",
       "queryName": "new_added_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
+    "closed_claims_DataDestination": {
+      "queryId": "a83b6b0b-4e25-4286-a8ee-217de29d474a",
+      "queryName": "closed_claims_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
     "deleted_purged_claims_DataDestination": {
-      "queryId": "854b486f-7e4a-46d8-900a-bc29ea101918",
+      "queryId": "cbc5655b-0872-4d6a-850d-704615beef32",
       "queryName": "deleted_purged_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "gl_reported_ending_DataDestination": {
-      "queryId": "19eedca4-eb49-4864-8682-8f0fc522e1f8",
+      "queryId": "397bc147-5b5a-41af-8835-2831486ada97",
       "queryName": "gl_reported_ending_DataDestination",
       "isHidden": true,
       "loadEnabled": false

@@ -51,34 +51,39 @@
       "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
     },
     "opening_claims_DataDestination": {
-      "queryId": "20741be5-09b6-49dc-a031-ed7e1ca5e50e",
+      "queryId": "34c403da-5430-42cf-b7b6-e4f1aac5ef1a",
       "queryName": "opening_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "new_added_claims_DataDestination": {
-      "queryId": "b2cfd248-6a1b-4e27-b09e-a26547d3eebc",
+      "queryId": "b7eb4044-951b-4dd7-86d4-4fa66d2e8707",
       "queryName": "new_added_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "closed_claims_DataDestination": {
-      "queryId": "afd04379-64e8-46d4-b1ea-14d610eccb2b",
+      "queryId": "ce3d00e9-22aa-41d9-9f63-bb686fa665ff",
       "queryName": "closed_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "deleted_purged_claims_DataDestination": {
-      "queryId": "e73d4ac1-8b98-4c11-8f4e-ec46c6d9c025",
+      "queryId": "b754b145-4c2b-4a3f-a75a-d66cb32f3e5a",
       "queryName": "deleted_purged_claims_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "gl_reported_ending_DataDestination": {
-      "queryId": "045f5db9-1643-450d-b6f1-cfed29bf1f54",
+      "queryId": "dc1d638a-c298-49a1-ba54-44f406e1c669",
       "queryName": "gl_reported_ending_DataDestination",
       "isHidden": true,
       "loadEnabled": false
+    },
+    "Merge": {
+      "queryId": "86e493f2-b202-45ef-abb6-d654fe8de0c8",
+      "queryName": "Merge",
+      "queryGroupId": "51f77719-014b-479c-a46c-17991c406075"
     }
   },
   "connections": [
