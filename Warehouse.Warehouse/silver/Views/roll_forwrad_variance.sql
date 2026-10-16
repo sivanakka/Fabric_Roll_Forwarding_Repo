@@ -1,4 +1,4 @@
-CREATE view silver.roll_forwrad_variance AS
+CREATE   view silver.roll_forwrad_variance AS
 
 SELECT 
     'roll_forwrad_variance'                                                          AS [report_name],

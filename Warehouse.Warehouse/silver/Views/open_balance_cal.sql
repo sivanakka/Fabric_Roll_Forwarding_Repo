@@ -1,6 +1,6 @@
 -- 1. Original master_src_rpt rows (IH5P, IH2, IH7, IH3, IH5C, misc buckets)
 
-CREATE        view silver.open_balance_cal AS
+CREATE         view silver.open_balance_cal AS
 SELECT 
     [report_name],
     [accounting_period],
