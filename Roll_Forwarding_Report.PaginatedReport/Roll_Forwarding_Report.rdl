@@ -121,9 +121,9 @@
                   <TextRun>
                     <Value>Roll Forwarding Report</Value>
                     <Style>
-                      <FontSize>22pt</FontSize>
+                      <FontFamily>Arial</FontFamily>
+                      <FontSize>20pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <Color>#17324d</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -206,7 +206,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Line of Business</Value>
+                                  <Value>lob</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -241,7 +241,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Jurisdiction</Value>
+                                  <Value>jurisdiction</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -255,8 +255,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -275,7 +273,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Accounting Period</Value>
+                                  <Value>accounting period</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -290,8 +288,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -310,7 +306,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Total Claims</Value>
+                                  <Value>src total claims</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -325,8 +321,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -345,7 +339,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Total Claims</Value>
+                                  <Value>rpt total claims</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -360,8 +354,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -380,7 +372,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Net Liability</Value>
+                                  <Value>src net liab amt</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -395,8 +387,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -415,7 +405,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Net Liability</Value>
+                                  <Value>rpt net liab amt</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -430,8 +420,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -450,7 +438,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Approved Amount</Value>
+                                  <Value>src approved amt</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -465,8 +453,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -485,7 +471,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Approved Amount</Value>
+                                  <Value>rpt approved amt</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -500,8 +486,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -518,9 +502,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Access Fee</Value>
+                                  <Value>src access fee</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -533,8 +518,6 @@
                               <Color>#b9c8d6</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -551,9 +534,12 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Access Fee</Value>
+                                  <Value>rpt access fee</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -563,11 +549,9 @@
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#b9c8d6</Color>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -584,9 +568,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Claim Liability</Value>
+                                  <Value>src claim liab amt</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -596,11 +581,9 @@
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#b9c8d6</Color>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -617,9 +600,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Claim Liability</Value>
+                                  <Value>rpt claim liab amt</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -629,11 +613,9 @@
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#b9c8d6</Color>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -650,9 +632,12 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Source Admin Amount</Value>
+                                  <Value>src admin amt</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -665,8 +650,6 @@
                               <Color>#b9c8d6</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -683,9 +666,12 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reported Admin Amount</Value>
+                                  <Value>rpt admin amt</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                  <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -698,8 +684,6 @@
                               <Color>#b9c8d6</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#17324d</BackgroundColor>
-                            <Color>#ffffff</Color>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -768,7 +752,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -801,7 +784,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -824,7 +806,6 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,##0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -836,7 +817,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
                             <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -860,7 +840,6 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,##0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -872,8 +851,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -896,7 +873,6 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -908,8 +884,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -944,8 +918,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -968,7 +940,6 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -980,8 +951,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1004,7 +973,6 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1016,8 +984,6 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1037,7 +1003,6 @@
                                   <Value>=Sum(Fields!src_access_fee.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1049,8 +1014,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1069,8 +1032,6 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!rpt_access_fee.Value)</Value>
                                   <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1082,8 +1043,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1102,8 +1061,6 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!src_claim_liab_amt.Value)</Value>
                                   <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1115,8 +1072,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1135,8 +1090,6 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!rpt_claim_liab_amt.Value)</Value>
                                   <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1148,8 +1101,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1168,8 +1119,6 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!src_admin_amt.Value)</Value>
                                   <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1181,8 +1130,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1201,8 +1148,6 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!rpt_admin_amt.Value)</Value>
                                   <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>$#,##0.00;($#,##0.00);-</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1214,8 +1159,6 @@
                               <Color>#d5dee8</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#f4f7fa</BackgroundColor>
-                            <TextAlign>Right</TextAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1229,21 +1172,21 @@
                 <TablixRow>
                   <Height>7mm</Height>
                   <TablixCells> 
-                    <TablixCell><CellContents><Textbox Name="GrandTotalLabel"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>GRAND TOTAL</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalJurisdiction"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Parameters!Jurisdiction.Value</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalPeriod"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>All Periods</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcClaims"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_total_claims.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>#,##0</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptClaims"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_total_claims.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>#,##0</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcNetLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_net_liab_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptNetLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_net_liab_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcApproved"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_approved_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptApproved"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_approved_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcAccessFee"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_access_fee.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptAccessFee"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_access_fee.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcClaimLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_claim_liab_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptClaimLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_claim_liab_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcAdmin"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_admin_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
-                    <TablixCell><CellContents><Textbox Name="GrandTotalRptAdmin"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_admin_amt.Value, "goldIH6")</Value><Style><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);-</Format></Style></TextRun></TextRuns></Paragraph></Paragraphs><Style><BackgroundColor>#dce9ef</BackgroundColor><Border><Color>#17324d</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><TextAlign>Right</TextAlign></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalLabel"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>GRAND TOTAL</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalJurisdiction"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Parameters!Jurisdiction.Value</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalPeriod"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>All Periods</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcClaims"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_total_claims.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptClaims"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_total_claims.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcNetLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_net_liab_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptNetLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_net_liab_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcApproved"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_approved_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptApproved"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_approved_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcAccessFee"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_access_fee.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptAccessFee"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_access_fee.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcClaimLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_claim_liab_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptClaimLiability"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_claim_liab_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalSrcAdmin"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!src_admin_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrandTotalRptAdmin"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!rpt_admin_amt.Value, "goldIH6")</Value></TextRun></TextRuns></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
@@ -1296,8 +1239,6 @@
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
                           </Border>
-                          <BackgroundColor>#17324d</BackgroundColor>
-                          <Color>#ffffff</Color>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -1344,7 +1285,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                      <Value>=Replace(Fields!report_name.Value, "_", " ")</Value>
+                                      <Value>=Fields!report_name.Value</Value>
                                     <Style>
                                       <FontFamily>Arial</FontFamily>
                                     </Style>
@@ -1358,8 +1299,6 @@
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
-                              <BackgroundColor>#dce9ef</BackgroundColor>
-                              <Color>#17324d</Color>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
