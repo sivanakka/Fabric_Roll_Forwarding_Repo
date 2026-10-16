@@ -1,0 +1,568 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.master_src as\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[opening_claims_src_summry]\n\n\n\nUNION ALL\n\n\n\n-- 2. New Added Claims Source Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[new_added_claims_src_summry]\n\n\n\nUNION ALL\n\n\n\n-- 3. Closed Claims Source Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[closed_claims_src_summry]\n\n\n\nUNION ALL\n\n\n\n-- 4. Deleted / Purged Claims Source Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[deleted_purged_claims_src_summry]\n\n\n\nUNION ALL\n\n\n\n-- 5. GL Reported Ending Source Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[gl_reported_ending_src_summry]\n\n\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "master_src",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.master_rpt as\n\n\n\n\n\n-- 1. Opening Claims Report Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[opening_claims_rpt_summry]\n\n\n\nUNION ALL\n\n\n\n-- 2. New Added Claims Report Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[new_added_claims_rpt_summry]\n\n\n\nUNION ALL\n\n\n\n-- 3. Closed Claims Report Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[closed_claims_rpt_summry]\n\n\n\nUNION ALL\n\n\n\n-- 4. Deleted / Purged Claims Report Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[deleted_purged_claims_rpt_summry]\n\n\n\nUNION ALL\n\n\n\n-- 5. GL Reported Ending Report Summary\n\nSELECT \n\n    [report_name],\n\n    [accounting_period],\n\n    [lob],\n\n    [jurisdiction],\n\n    [total_claims],\n\n    [total_approved_payment_amt],\n\n    [total_access_fee],\n\n    [total_claim_liab_amt],\n\n    [total_admin_amt],\n\n    [total_net_liab_amt]\n\nFROM [bronze].[gl_reported_ending_rpt_summry]\n\n\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "master_rpt",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE       VIEW silver.master_src_rpt as\nSELECT \n    COALESCE(r.[report_name], s.[report_name])             AS [report_name],\n   -- COALESCE(r.[accounting_period], s.[accounting_period])\n    '09/30/2026' AS [accounting_period],\n    COALESCE(r.[lob], s.[lob])                             AS [lob],\n    COALESCE(r.[jurisdiction], s.[jurisdiction])           AS [jurisdiction],\n \n    COALESCE(s.[total_claims], 0)                          AS [src_total_claims],\n    COALESCE(r.[total_claims], 0)                          AS [rpt_total_claims],\n    COALESCE(s.[total_net_liab_amt], 0.00)                 AS [src_net_liab_amt],\n    COALESCE(r.[total_net_liab_amt], 0.00)                 AS [rpt_net_liab_amt],\n    \n    COALESCE(s.[total_approved_payment_amt], 0.00)         AS [src_approved_amt],\n    COALESCE(r.[total_approved_payment_amt], 0.00)         AS [rpt_approved_amt],\n    COALESCE(s.[total_access_fee], 0.00)                   AS [src_access_fee],\n    COALESCE(r.[total_access_fee], 0.00)                   AS [rpt_access_fee],\n    COALESCE(s.[total_claim_liab_amt], 0.00)               AS [src_claim_liab_amt],\n    COALESCE(r.[total_claim_liab_amt], 0.00)               AS [rpt_claim_liab_amt],\n    COALESCE(s.[total_admin_amt], 0.00)                    AS [src_admin_amt],\n    COALESCE(r.[total_admin_amt], 0.00)                    AS [rpt_admin_amt]\nFROM [silver].[master_rpt] r\nINNER JOIN [silver].[master_src] s\n    ON r.report_name=s.report_name\n\tAND r.[accounting_period] = s.[accounting_period]\n   AND r.[lob]               = s.[lob]\n   AND r.[jurisdiction]      = s.[jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "master_src_rpt",
+        "dependsOn": [
+          {
+            "activity": "master_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "master_src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.misc_src_bucketA AS\n\nWITH BucketA AS (\n    -- Universe of all claims active or reported during the period\n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[opening_claims_src]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[new_added_claims_src]\n),\nClosedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[closed_claims_src]\n),\nPurgedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[deleted_purged_claims_src]\n),\nGLEndingSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[gl_reported_ending_src]\n)\nSELECT \n    'misc_src_bucketA'                              AS [report_name],\n    a.[accounting_period]                           AS [accounting_period],\n    a.[lob]                                         AS [lob],\n    a.[jurisdiction]                                AS [jurisdiction],\n    COUNT(a.[claim_id])                            AS [total_claims],\n    COALESCE(SUM(a.[approved_payment_amt]), 0.00)   AS [total_approved_payment_amt],\n    COALESCE(SUM(a.[access_fee]), 0.00)             AS [total_access_fee],\n    COALESCE(SUM(a.[claim_liab_amt]), 0.00)         AS [total_claim_liab_amt],\n    COALESCE(SUM(a.[admin_amt]), 0.00)              AS [total_admin_amt],\n    COALESCE(SUM(a.[net_liab_amt]), 0.00)           AS [total_net_liab_amt]\n\nFROM BucketA a\nLEFT JOIN ClosedSet   c ON a.[claim_id] = c.[claim_id]\nLEFT JOIN PurgedSet   p ON a.[claim_id] = p.[claim_id]\nLEFT JOIN GLEndingSet g ON a.[claim_id] = g.[claim_id]\n\n-- Filters only for claims present in Bucket A but missing from Bucket B\nWHERE c.[claim_id] IS NULL \n  AND p.[claim_id] IS NULL \n  AND g.[claim_id] IS NULL\n\nGROUP BY \n    a.[accounting_period],\n    a.[lob],\n    a.[jurisdiction];\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_src_bucketAB",
+        "dependsOn": [
+          {
+            "activity": "master_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.misc_src_bucketB AS\n\nWITH BucketB AS (\n    -- Universe of all resolved, derecognized, or ending GL ledger claims\n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[closed_claims_src]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[deleted_purged_claims_src]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[gl_reported_ending_src]\n),\nOpeningSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[opening_claims_src]\n),\nNewAddedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[new_added_claims_src]\n)\nSELECT \n    'misc_src_bucketB'                              AS [report_name],\n    b.[accounting_period]                           AS [accounting_period],\n    b.[lob]                                         AS [lob],\n    b.[jurisdiction]                                AS [jurisdiction],\n    COUNT(b.[claim_id])                            AS [total_claims],\n    COALESCE(SUM(b.[approved_payment_amt]), 0.00)   AS [total_approved_payment_amt],\n    COALESCE(SUM(b.[access_fee]), 0.00)             AS [total_access_fee],\n    COALESCE(SUM(b.[claim_liab_amt]), 0.00)         AS [total_claim_liab_amt],\n    COALESCE(SUM(b.[admin_amt]), 0.00)              AS [total_admin_amt],\n    COALESCE(SUM(b.[net_liab_amt]), 0.00)           AS [total_net_liab_amt]\n\nFROM BucketB b\nLEFT JOIN OpeningSet  o ON b.[claim_id] = o.[claim_id]\nLEFT JOIN NewAddedSet n ON b.[claim_id] = n.[claim_id]\n\n-- Filters exclusively for records in Bucket B that have NO parent in Bucket A:\nWHERE o.[claim_id] IS NULL \n  AND n.[claim_id] IS NULL\n\nGROUP BY \n    b.[accounting_period],\n    b.[lob],\n    b.[jurisdiction];\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_src_bucketBA",
+        "dependsOn": [
+          {
+            "activity": "master_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.misc_rpt_bucketA AS\n\nWITH BucketA AS (\n    -- Universe of all claims active or reported during the period\n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[opening_claims_rpt]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[new_added_claims_rpt]\n),\nClosedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[closed_claims_rpt]\n),\nPurgedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[deleted_purged_claims_rpt]\n),\nGLEndingSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[gl_reported_ending_rpt]\n)\nSELECT \n    'misc_rpt_bucketA'                              AS [report_name],\n    a.[accounting_period]                           AS [accounting_period],\n    a.[lob]                                         AS [lob],\n    a.[jurisdiction]                                AS [jurisdiction],\n    COUNT(a.[claim_id])                            AS [total_claims],\n    COALESCE(SUM(a.[approved_payment_amt]), 0.00)   AS [total_approved_payment_amt],\n    COALESCE(SUM(a.[access_fee]), 0.00)             AS [total_access_fee],\n    COALESCE(SUM(a.[claim_liab_amt]), 0.00)         AS [total_claim_liab_amt],\n    COALESCE(SUM(a.[admin_amt]), 0.00)              AS [total_admin_amt],\n    COALESCE(SUM(a.[net_liab_amt]), 0.00)           AS [total_net_liab_amt]\n\nFROM BucketA a\nLEFT JOIN ClosedSet   c ON a.[claim_id] = c.[claim_id]\nLEFT JOIN PurgedSet   p ON a.[claim_id] = p.[claim_id]\nLEFT JOIN GLEndingSet g ON a.[claim_id] = g.[claim_id]\n\n-- Filters only for claims present in Bucket A but missing from Bucket B\nWHERE c.[claim_id] IS NULL \n  AND p.[claim_id] IS NULL \n  AND g.[claim_id] IS NULL\n\nGROUP BY \n    a.[accounting_period],\n    a.[lob],\n    a.[jurisdiction];\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_rpt_bucketAB",
+        "dependsOn": [
+          {
+            "activity": "master_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.misc_rpt_bucketB AS\nWITH BucketB AS (\n    -- Universe of all resolved, derecognized, or ending GL ledger claims\n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[closed_claims_rpt]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[deleted_purged_claims_rpt]\n    \n    UNION ALL\n    \n    SELECT \n        [claim_id],\n        [policy_no],\n        [lob],\n        [jurisdiction],\n        [accounting_period],\n        [approved_payment_amt],\n        [access_fee],\n        [claim_liab_amt],\n        [admin_amt],\n        [net_liab_amt]\n    FROM [bronze].[gl_reported_ending_rpt]\n),\nOpeningSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[opening_claims_rpt]\n),\nNewAddedSet AS (\n    SELECT DISTINCT [claim_id] FROM [bronze].[new_added_claims_rpt]\n)\nSELECT \n    'misc_rpt_bucketB'                              AS [report_name],\n    b.[accounting_period]                           AS [accounting_period],\n    b.[lob]                                         AS [lob],\n    b.[jurisdiction]                                AS [jurisdiction],\n    COUNT(b.[claim_id])                            AS [total_claims],\n    COALESCE(SUM(b.[approved_payment_amt]), 0.00)   AS [total_approved_payment_amt],\n    COALESCE(SUM(b.[access_fee]), 0.00)             AS [total_access_fee],\n    COALESCE(SUM(b.[claim_liab_amt]), 0.00)         AS [total_claim_liab_amt],\n    COALESCE(SUM(b.[admin_amt]), 0.00)              AS [total_admin_amt],\n    COALESCE(SUM(b.[net_liab_amt]), 0.00)           AS [total_net_liab_amt]\nFROM BucketB b\nLEFT JOIN OpeningSet  o ON b.[claim_id] = o.[claim_id]\nLEFT JOIN NewAddedSet n ON b.[claim_id] = n.[claim_id]\n-- Filters exclusively for records in Bucket B that have NO parent in Bucket A:\nWHERE o.[claim_id] IS NULL \n  AND n.[claim_id] IS NULL\nGROUP BY \n    b.[accounting_period],\n    b.[lob],\n    b.[jurisdiction];\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_rpt_bucketBA",
+        "dependsOn": [
+          {
+            "activity": "master_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE       VIEW [silver].[misc_bucketA_src_rpt]\nAS\nSELECT \n    -- 1. Dimensions (Consolidated via COALESCE)\n    'misc_bucketA'                                         AS [report_name],\n    COALESCE(r.[accounting_period], s.[accounting_period]) AS [accounting_period],\n    COALESCE(r.[lob], s.[lob])                             AS [lob],\n    COALESCE(r.[jurisdiction], s.[jurisdiction])           AS [jurisdiction],\n    -- 2. Claim Counts (Source vs Report)\n    COALESCE(s.[total_claims], 0)                          AS [src_total_claims],\n    COALESCE(r.[total_claims], 0)                          AS [rpt_total_claims],\n    -- 3. Net Liability (Total Reserve Balance)\n    COALESCE(s.[total_net_liab_amt], 0.00)                 AS [src_net_liab_amt],\n    COALESCE(r.[total_net_liab_amt], 0.00)                 AS [rpt_net_liab_amt],\n    -- 4. Component Breakdown Amounts\n    COALESCE(s.[total_approved_payment_amt], 0.00)         AS [src_approved_amt],\n    COALESCE(r.[total_approved_payment_amt], 0.00)         AS [rpt_approved_amt],\n    COALESCE(s.[total_access_fee], 0.00)                   AS [src_access_fee],\n    COALESCE(r.[total_access_fee], 0.00)                   AS [rpt_access_fee],\n    COALESCE(s.[total_claim_liab_amt], 0.00)               AS [src_claim_liab_amt],\n    COALESCE(r.[total_claim_liab_amt], 0.00)               AS [rpt_claim_liab_amt],\n    COALESCE(s.[total_admin_amt], 0.00)                    AS [src_admin_amt],\n    COALESCE(r.[total_admin_amt], 0.00)                    AS [rpt_admin_amt]\n  \nFROM [silver].[misc_rpt_bucketA] r\nJOIN [silver].[misc_src_bucketA] s\n    ON r.[accounting_period] = s.[accounting_period]\n    AND r.report_name=s.report_name\n   AND r.[lob]               = s.[lob]\n   AND r.[jurisdiction]      = s.[jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_bucketA_src_rpt",
+        "dependsOn": [
+          {
+            "activity": "misc_src_bucketAB",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "misc_src_bucketBA",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW [silver].[misc_bucketB_src_rpt]\nAS\nSELECT \n    -- 1. Dimensions (Consolidated via COALESCE)\n    'misc_bucketB'                                         AS [report_name],\n    COALESCE(r.[accounting_period], s.[accounting_period]) AS [accounting_period],\n    COALESCE(r.[lob], s.[lob])                             AS [lob],\n    COALESCE(r.[jurisdiction], s.[jurisdiction])           AS [jurisdiction],\n    -- 2. Claim Counts (Source vs Report)\n    COALESCE(s.[total_claims], 0)                          AS [src_total_claims],\n    COALESCE(r.[total_claims], 0)                          AS [rpt_total_claims],\n    -- 3. Net Liability (Total Reserve Balance)\n    COALESCE(s.[total_net_liab_amt], 0.00)                 AS [src_net_liab_amt],\n    COALESCE(r.[total_net_liab_amt], 0.00)                 AS [rpt_net_liab_amt],\n    -- 4. Component Breakdown Amounts\n    COALESCE(s.[total_approved_payment_amt], 0.00)         AS [src_approved_amt],\n    COALESCE(r.[total_approved_payment_amt], 0.00)         AS [rpt_approved_amt],\n    COALESCE(s.[total_access_fee], 0.00)                   AS [src_access_fee],\n    COALESCE(r.[total_access_fee], 0.00)                   AS [rpt_access_fee],\n    COALESCE(s.[total_claim_liab_amt], 0.00)               AS [src_claim_liab_amt],\n    COALESCE(r.[total_claim_liab_amt], 0.00)               AS [rpt_claim_liab_amt],\n    COALESCE(s.[total_admin_amt], 0.00)                    AS [src_admin_amt],\n    COALESCE(r.[total_admin_amt], 0.00)                    AS [rpt_admin_amt]\nFROM [silver].[misc_rpt_bucketB] r\nJOIN [silver].[misc_src_bucketB] s\n    ON r.report_name=s.report_name AND \n    r.[accounting_period] = s.[accounting_period]\n   AND r.[lob]               = s.[lob]\n   AND r.[jurisdiction]      = s.[jurisdiction];\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "misc_bucketB_src_rpt",
+        "dependsOn": [
+          {
+            "activity": "misc_rpt_bucketAB",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "misc_rpt_bucketBA",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "-- 1. Original master_src_rpt rows (IH5P, IH2, IH7, IH3, IH5C, misc buckets)\n\nCREATE         view silver.open_balance_cal AS\nSELECT \n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    [src_total_claims],\n    [rpt_total_claims],\n    [src_net_liab_amt],\n    [rpt_net_liab_amt],\n    [src_approved_amt],\n    [rpt_approved_amt],\n    [src_access_fee],\n    [rpt_access_fee],\n    [src_claim_liab_amt],\n    [rpt_claim_liab_amt],\n    [src_admin_amt],\n    [rpt_admin_amt]\nFROM [silver].[master_src_rpt]\n\nUNION ALL \nSELECT * FROM \n[silver].[misc_bucketA_src_rpt]\n\nUNION ALL \n\nSELECT * FROM \n[silver].[misc_bucketB_src_rpt]\n\nUNION ALL\nSELECT \n  \n    'open_balance_cal'                                 AS [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    \n    -- Total Claims (src & rpt)\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_total_claims], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_total_claims], 0) ELSE 0 END)\n    ) AS [src_total_claims],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_total_claims], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_total_claims], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_total_claims], 0) ELSE 0 END)\n    ) AS [rpt_total_claims],\n\n    -- Net Liability Amounts (src & rpt)\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_net_liab_amt], 0) ELSE 0 END)\n    ) AS [src_net_liab_amt],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_net_liab_amt], 0) ELSE 0 END)\n    ) AS [rpt_net_liab_amt],\n\n    -- Approved Indemnity Amounts\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_approved_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_approved_amt], 0) ELSE 0 END)\n    ) AS [src_approved_amt],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_approved_amt], 0) ELSE 0 END)\n    ) AS [rpt_approved_amt],\n\n    -- Access Fee / Deductibles\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_access_fee], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_access_fee], 0) ELSE 0 END)\n    ) AS [src_access_fee],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_access_fee], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_access_fee], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_access_fee], 0) ELSE 0 END)\n    ) AS [rpt_access_fee],\n\n    -- Claim Loss Liability\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_claim_liab_amt], 0) ELSE 0 END)\n    ) AS [src_claim_liab_amt],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_claim_liab_amt], 0) ELSE 0 END)\n    ) AS [rpt_claim_liab_amt],\n\n    -- Administrative Expenses (ALAE)\n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([src_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([src_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([src_admin_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([src_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([src_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([src_admin_amt], 0) ELSE 0 END)\n    ) AS [src_admin_amt],\n    \n    (\n        SUM(CASE WHEN [report_name] = 'IH5P'                 THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH2'                  THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketB_src_rpt' THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END)\n    ) - (\n        SUM(CASE WHEN [report_name] = 'IH7'                  THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'IH3'                  THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END) +\n        SUM(CASE WHEN [report_name] = 'misc_bucketA_src_rpt' THEN ISNULL([rpt_admin_amt], 0) ELSE 0 END)\n    ) AS [rpt_admin_amt]\n\nFROM [silver].[master_src_rpt]\nWHERE [report_name] IN ('IH5P', 'IH2', 'misc_bucketB_src_rpt', 'IH7', 'IH3', 'misc_bucketA_src_rpt')\nGROUP BY [accounting_period], [lob], [jurisdiction]\n\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "open_balance_cal",
+        "dependsOn": [
+          {
+            "activity": "misc_bucketA_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "misc_bucketB_src_rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   view silver.roll_forwrad_variance AS\nSELECT \n    'roll_forwrad_variance'                                                          AS [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    -- 1. Claims Count: SUM(IH5C) - SUM(open_balance_cal)\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_total_claims] ELSE 0 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_total_claims] ELSE 0 END) AS [src_total_claims],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_total_claims] ELSE 0 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_total_claims] ELSE 0 END) AS [rpt_total_claims],\n    -- 2. Net Liability (Total Reserve): SUM(IH5C) - SUM(open_balance_cal)\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_net_liab_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_net_liab_amt] ELSE 0.00 END) AS [src_net_liab_amt],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_net_liab_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_net_liab_amt] ELSE 0.00 END) AS [rpt_net_liab_amt],\n    -- 3. Approved Payment Amount\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_approved_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_approved_amt] ELSE 0.00 END) AS [src_approved_amt],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_approved_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_approved_amt] ELSE 0.00 END) AS [rpt_approved_amt],\n    -- 4. Access Fee (Deductible / Co-pay)\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_access_fee] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_access_fee] ELSE 0.00 END) AS [src_access_fee],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_access_fee] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_access_fee] ELSE 0.00 END) AS [rpt_access_fee],\n    -- 5. Claim Liability Amount\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_claim_liab_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_claim_liab_amt] ELSE 0.00 END) AS [src_claim_liab_amt],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_claim_liab_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_claim_liab_amt] ELSE 0.00 END) AS [rpt_claim_liab_amt],\n    -- 6. Admin Amount\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [src_admin_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [src_admin_amt] ELSE 0.00 END) AS [src_admin_amt],\n    SUM(CASE WHEN [report_name] = 'IH5C' THEN [rpt_admin_amt] ELSE 0.00 END) \n    - SUM(CASE WHEN [report_name] = 'open_balance_cal' THEN [rpt_admin_amt] ELSE 0.00 END) AS [rpt_admin_amt]\nFROM [silver].[open_balance_cal]\nWHERE [report_name] IN ('IH5C', 'open_balance_cal')\nGROUP BY \n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "roll_forwrad_variance",
+        "dependsOn": [
+          {
+            "activity": "open_balance_cal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE   VIEW silver.src_rpt_var as\nSELECT \n    [report_name], \n    [accounting_period], \n    [lob], \n    [jurisdiction], \n    \n    -- Claims Comparison & Variance\n    [src_total_claims], \n    [rpt_total_claims], \n    ISNULL([rpt_total_claims], 0) - ISNULL([src_total_claims], 0) AS [variance_total_claims], \n    \n    -- Net Liability Comparison & Variance\n    [src_net_liab_amt], \n    [rpt_net_liab_amt],\n    ISNULL([rpt_net_liab_amt], 0) - ISNULL([src_net_liab_amt], 0) AS [variance_net_liab_amt],\n    -- Approved Amount Comparison & Variance\n    [src_approved_amt], \n    [rpt_approved_amt],\n    ISNULL([rpt_approved_amt], 0) - ISNULL([src_approved_amt], 0) AS [variance_approved_amt],\n    -- Access Fee Comparison & Variance\n    [src_access_fee], \n    [rpt_access_fee],\n    ISNULL([rpt_access_fee], 0) - ISNULL([src_access_fee], 0) AS [variance_access_fee],\n    -- Claim Liability Comparison & Variance\n    [src_claim_liab_amt], \n    [rpt_claim_liab_amt],\n    ISNULL([rpt_claim_liab_amt], 0) - ISNULL([src_claim_liab_amt], 0) AS [variance_claim_liab_amt],\n    -- Admin Amount Comparison & Variance\n    [src_admin_amt], \n    [rpt_admin_amt],\n    ISNULL([rpt_admin_amt], 0) - ISNULL([src_admin_amt], 0) AS [variance_admin_amt]\nFROM (\n    SELECT * FROM [silver].[open_balance_cal]\n    UNION ALL \n    SELECT * FROM [silver].[roll_forwrad_variance]\n) AS [combined_data];\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "src_rpt_var",
+        "dependsOn": [
+          {
+            "activity": "roll_forwrad_variance",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

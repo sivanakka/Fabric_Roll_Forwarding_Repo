@@ -1,0 +1,181 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "19a35699-6d64-b071-470c-31aed458fed8",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "72d23c24-76fd-4232-a555-8abc32acf0e6"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "SRC_RPT_Bronze",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "2b0e8d6c-6344-92db-4704-b6c3f752ab28",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "72d23c24-76fd-4232-a555-8abc32acf0e6"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "SRC_RPT_Silver",
+        "dependsOn": [
+          {
+            "activity": "SRC_RPT_Bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE     VIEW [gold].[IH6] AS\r\n\r\nSELECT TOP (100) PERCENT\r\n\r\n\t CASE [report_name]\r\n    WHEN 'IH5P' THEN 1\r\n    WHEN 'IH2' THEN 2\r\n    WHEN 'misc_bucketB_src_rpt' THEN 3\r\n    WHEN 'IH7' THEN 4\r\n    WHEN 'IH3' THEN 5\r\n    WHEN 'misc_bucketA_src_rpt' THEN 6\r\n    WHEN 'IH5C' THEN 7\r\n    WHEN 'open_balance_cal' THEN 8\r\n    ELSE 9 END AS SORT_KEY,\r\n  *\r\nFROM (\r\n    SELECT\r\n      *\r\n    FROM [silver].[src_rpt_var]\r\n\r\n) AS combined_reports\r\nORDER BY SORT_KEY\r\n\r\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "IH6_GOLD",
+        "dependsOn": [
+          {
+            "activity": "SRC_RPT_Silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": "SELECT *\nfrom gold.IH6\nwhere report_name='roll_forwrad_variance' and (src_net_liab_amt!=0 or rpt_net_liab_amt!=0)\n",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "connectionSettings": {
+              "name": "Warehouse",
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+                  "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000"
+                },
+                "externalReferences": {
+                  "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Lookup1",
+        "dependsOn": [
+          {
+            "activity": "IH6_GOLD",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>activity('Lookup1').output.value[4]</p>",
+          "to": "fabric1@sivanakka2139gmail.onmicrosoft.com",
+          "subject": {
+            "value": "CONCAT(@activity('Lookup1').output.value[3],'Roll')",
+            "type": "Expression"
+          }
+        },
+        "externalReferences": {
+          "connection": "21480665-005b-48ff-9d5b-ce865dc8a78c"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Office365Email1",
+        "dependsOn": [
+          {
+            "activity": "Lookup1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

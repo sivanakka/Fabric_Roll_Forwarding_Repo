@@ -1,0 +1,504 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "209250f8-cb73-adc4-4ea8-7ead366e62b6",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric",
+          "executeMashupQueriesOnly": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Balance_Sys_Src",
+        "dependsOn": []
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "0c1f5e7e-b134-85be-474c-9062ceac87c2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric",
+          "executeMashupQueriesOnly": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Balance_Sys_Rpt",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "\r\nCREATE OR ALTER    VIEW [bronze].[opening_claims_src_summry] AS\r\nSELECT\r\n    [report_name],\r\n    [accounting_period],\r\n    [lob],\r\n    [jurisdiction],\r\n    COUNT([claim_id])               AS [total_claims],\r\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\r\n    SUM([access_fee])               AS [total_access_fee],\r\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\r\n    SUM([admin_amt])                AS [total_admin_amt],\r\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\r\nFROM [bronze].[opening_claims_src]\r\nGROUP BY \r\n [report_name],\r\n    [accounting_period],\r\n    [lob],\r\n    [jurisdiction]",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "opening_claims_src_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "\nCREATE OR ALTER    VIEW [bronze].[new_added_claims_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[new_added_claims_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "new_added_claims_src_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "\nCREATE OR ALTER    VIEW [bronze].[closed_claims_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[closed_claims_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "closed_claims_src_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE    VIEW [bronze].[deleted_purged_claims_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "deleted_purged_claims_src_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE    VIEW [bronze].[gl_reported_ending_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "gl_reported_ending_src_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Src",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "\r\nCREATE OR ALTER    VIEW [bronze].[opening_claims_rpt_summry] AS\r\nSELECT\r\n    [report_name],\r\n    [accounting_period],\r\n    [lob],\r\n    [jurisdiction],\r\n    COUNT([claim_id])               AS [total_claims],\r\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\r\n    SUM([access_fee])               AS [total_access_fee],\r\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\r\n    SUM([admin_amt])                AS [total_admin_amt],\r\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\r\nFROM [bronze].[opening_claims_rpt]\r\nGROUP BY \r\n [report_name],\r\n    [accounting_period],\r\n    [lob],\r\n    [jurisdiction]",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "opening_claims_rpt_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "\nCREATE OR ALTER    VIEW [bronze].[new_added_claims_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[new_added_claims_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "new_added_claims_rpt_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE OR ALTER    VIEW [bronze].[closed_claims_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[closed_claims_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "closed_claims_rpt_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE    VIEW [bronze].[deleted_purged_claims_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "deleted_purged_claims_src_summry_copy1",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "CREATE    VIEW [bronze].[gl_reported_ending_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "Warehouse",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "479b8eaa-c6aa-80a5-4ec3-f1bc8967e00d",
+              "endpoint": "4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "7a4e80a7-de19-4e14-b9fd-759fd5d9a009"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "gl_reported_ending_rpt_summry",
+        "dependsOn": [
+          {
+            "activity": "Balance_Sys_Rpt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

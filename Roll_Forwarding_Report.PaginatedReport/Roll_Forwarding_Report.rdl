@@ -100,14 +100,24 @@
             <FilterValue>=Parameters!Jurisdiction.Value</FilterValue>
           </FilterValues>
         </Filter>
+        <Filter>
+          <FilterExpression>=Fields!lob.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!LOB.Value</FilterValue>
+          </FilterValues>
+        </Filter>
       </Filters>
     </DataSet>
-    <DataSet Name="goldIH61">
+    <DataSet Name="Parameters">
       <Query>
         <DataSourceName>PowerQuery</DataSourceName>
-        <CommandText>{"QueryName":"gold IH6","MashupDocument":"section Section1;\r\nshared #\"gold IH6\" = let\r\n  Source = Fabric.Warehouse([HierarchicalNavigation = null]),\r\n  #\"Navigation 1\" = Source{[workspaceId = \"79c0354c-084d-4c2b-804b-4070eec93af3\"]}[Data],\r\n  #\"Navigation 2\" = #\"Navigation 1\"{[warehouseId = \"8967e00d-f1bc-4ec3-80a5-c6aa479b8eaa\"]}[Data],\r\n  #\"Navigation 3\" = #\"Navigation 2\"{[Schema = \"gold\", Item = \"IH6\"]}[Data],\r\n  #\"Removed other columns 1\" = Table.SelectColumns(#\"Navigation 3\", {\"jurisdiction\"}),\r\n  #\"Removed duplicates\" = Table.Distinct(#\"Removed other columns 1\", {\"jurisdiction\"})\r\nin\r\n  #\"Removed duplicates\";\r\n","ConnectionOverrides":[{"Path":"Warehouse","Kind":"Warehouse","Provider":"DmtsFabric","AuthenticationKind":null,"EnvironmentName":null,"ApiName":null,"ConnectionName":"{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"7a4e80a7-de19-4e14-b9fd-759fd5d9a009\"}","PrivacyGroup":"None","CredentialDetails":{},"Audience":null,"ConnectionParameters":{}}],"GatewayObjectId":null,"ParameterDefinitions":[]}</CommandText>
+        <CommandText>{"QueryName":"gold IH6","MashupDocument":"section Section1;\r\nshared #\"gold IH6\" = let\r\n  Source = Fabric.Warehouse([HierarchicalNavigation = null]),\r\n  #\"Navigation 1\" = Source{[workspaceId = \"79c0354c-084d-4c2b-804b-4070eec93af3\"]}[Data],\r\n  #\"Navigation 2\" = #\"Navigation 1\"{[warehouseId = \"8967e00d-f1bc-4ec3-80a5-c6aa479b8eaa\"]}[Data],\r\n  #\"Navigation 3\" = #\"Navigation 2\"{[Schema = \"gold\", Item = \"IH6\"]}[Data],\r\n  #\"Removed other columns\" = Table.SelectColumns(#\"Navigation 3\", {\"lob\", \"jurisdiction\"}),\r\n  #\"Removed duplicates\" = Table.Distinct(#\"Removed other columns\", {\"jurisdiction\"})\r\nin\r\n  #\"Removed duplicates\";\r\n","ConnectionOverrides":[{"Path":"Warehouse","Kind":"Warehouse","Provider":"DmtsFabric","AuthenticationKind":null,"EnvironmentName":null,"ApiName":null,"ConnectionName":"{\"ClusterId\":\"efb13d88-6c44-4a50-a98f-598f4b91fb15\",\"DatasourceId\":\"7a4e80a7-de19-4e14-b9fd-759fd5d9a009\"}","PrivacyGroup":"None","CredentialDetails":{},"Audience":null,"ConnectionParameters":{}}],"GatewayObjectId":null,"ParameterDefinitions":[]}</CommandText>
       </Query>
       <Fields>
+        <Field Name="lob">
+          <DataField>lob</DataField>
+        </Field>
         <Field Name="jurisdiction">
           <DataField>jurisdiction</DataField>
         </Field>
@@ -1609,12 +1619,26 @@
   <ReportParameters>
     <ReportParameter Name="Jurisdiction">
       <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
+      <Prompt>Jurisdiction</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>goldIH61</DataSetName>
+          <DataSetName>Parameters</DataSetName>
           <ValueField>jurisdiction</ValueField>
           <LabelField>jurisdiction</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="LOB">
+      <DataType>String</DataType>
+      <Prompt>LOB</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Parameters</DataSetName>
+          <ValueField>lob</ValueField>
+          <LabelField>lob</LabelField>
         </DataSetReference>
       </ValidValues>
       <cl:ComponentMetadata>
@@ -1631,6 +1655,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>Jurisdiction</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>LOB</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "SRC_RPT_Bronze"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "19a35699-6d64-b071-470c-31aed458fed8"
+  }
+}

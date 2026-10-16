@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MountedDataFactory",
+    "displayName": "DataFactoryTest12387"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "997bcc21-d6db-932c-4411-55169753b950"
+  }
+}
