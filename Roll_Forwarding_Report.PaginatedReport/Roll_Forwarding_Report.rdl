@@ -16,15 +16,6 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DataSource2">
-      <rd:SecurityType>DataBase</rd:SecurityType>
-      <ConnectionProperties>
-        <DataProvider>SQLAZURE</DataProvider>
-        <ConnectString>Data Source=4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Initial Catalog=Warehouse;Authentication=ActiveDirectoryInteractive</ConnectString>
-        <Prompt>Specify a user name and password for data source DataSource2:</Prompt>
-      </ConnectionProperties>
-      <rd:DataSourceID>79792f78-a5ba-49ec-9afa-0dc054dcef5f</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="PowerQuery">
       <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
