@@ -1,4 +1,4 @@
-CREATE     VIEW [silver].[misc_bucketA_src_rpt]
+CREATE       VIEW [silver].[misc_bucketA_src_rpt]
 AS
 SELECT 
     -- 1. Dimensions (Consolidated via COALESCE)
@@ -37,9 +37,5 @@ JOIN [silver].[misc_src_bucketA] s
     AND r.report_name=s.report_name
    AND r.[lob]               = s.[lob]
    AND r.[jurisdiction]      = s.[jurisdiction]
-UNION
-
-SELECT * FROM
-[silver].[master_src_rpt]
 
 GO

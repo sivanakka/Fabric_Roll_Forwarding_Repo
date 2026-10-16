@@ -142,7 +142,7 @@ shared gl_reported_ending = let
     {"net_liab_amt", type number}
 }, "en-US"),
   Custom = Table.SelectRows(#"Changed column type with locale", each ([claim_id] <> "TOTAL")),
-  #"Custom 1" = Table.AddColumn(#"Custom", "report_name", each "IH5P"),
+  #"Custom 1" = Table.AddColumn(#"Custom", "report_name", each "IH5C"),
   #"Changed column type" = Table.TransformColumnTypes(#"Custom 1", {{"report_name", type text}})
 in
   #"Changed column type";

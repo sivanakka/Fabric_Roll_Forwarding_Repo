@@ -1,19 +1,19 @@
 CREATE TABLE [dbo].[gl_reported_ending] (
-    [claim_id]                VARCHAR (50)    NOT NULL,
-    [policy_no]               VARCHAR (50)    NOT NULL,
-    [lob]                     VARCHAR (20)    NOT NULL,
-    [jurisdiction]            VARCHAR (10)    NOT NULL,
-    [accounting_period]       VARCHAR (20)    NOT NULL,
-    [transaction_date]        VARCHAR (20)    NOT NULL,
-    [transaction_type]        VARCHAR (50)    NOT NULL,
-    [high_level_claim_status] VARCHAR (20)    NOT NULL,
-    [claim_status]            VARCHAR (50)    NOT NULL,
-    [approved_payment_amt]    DECIMAL (18, 2) NOT NULL,
-    [access_fee]              DECIMAL (18, 2) NOT NULL,
-    [claim_liab_amt]          DECIMAL (18, 2) NOT NULL,
-    [admin_amt]               DECIMAL (18, 2) NOT NULL,
-    [net_liab_amt]            DECIMAL (18, 2) NOT NULL,
-    [scenario]                VARCHAR (500)   NOT NULL
+    [claim_id]                VARCHAR (8000) NULL,
+    [policy_no]               VARCHAR (8000) NULL,
+    [lob]                     VARCHAR (8000) NULL,
+    [jurisdiction]            VARCHAR (8000) NULL,
+    [accounting_period]       DATE           NULL,
+    [transaction_date]        DATE           NULL,
+    [transaction_type]        VARCHAR (8000) NULL,
+    [high_level_claim_status] VARCHAR (8000) NULL,
+    [claim_status]            VARCHAR (8000) NULL,
+    [approved_payment_amt]    FLOAT (53)     NULL,
+    [access_fee]              FLOAT (53)     NULL,
+    [claim_liab_amt]          FLOAT (53)     NULL,
+    [admin_amt]               FLOAT (53)     NULL,
+    [net_liab_amt]            FLOAT (53)     NULL,
+    [scenario]                VARCHAR (8000) NULL
 );
 
 

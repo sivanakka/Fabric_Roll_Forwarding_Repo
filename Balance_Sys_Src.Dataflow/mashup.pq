@@ -70,11 +70,9 @@ shared new_added_claims = let
     {"net_liab_amt", type number}
 }, "en-US"),
   Custom = Table.AddColumn(#"Custom 1", "report_name", each "IH2"),
-  #"Changed column type" = Table.TransformColumnTypes(Custom, {{"report_name", type text}}),
-  #"Merged queries" = Table.NestedJoin(#"Changed column type", {"claim_id"}, opening_claims, {"claim_id"}, "opening_claims", JoinKind.LeftAnti),
-  #"Removed columns" = Table.RemoveColumns(#"Merged queries", {"opening_claims"})
+  #"Changed column type" = Table.TransformColumnTypes(Custom, {{"report_name", type text}})
 in
-    #"Removed columns";
+    #"Changed column type";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "closed_claims_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "claim_id", DestinationColumnName = "claim_id"], [SourceColumnName = "policy_no", DestinationColumnName = "policy_no"], [SourceColumnName = "lob", DestinationColumnName = "lob"], [SourceColumnName = "jurisdiction", DestinationColumnName = "jurisdiction"], [SourceColumnName = "accounting_period", DestinationColumnName = "accounting_period"], [SourceColumnName = "transaction_date", DestinationColumnName = "transaction_date"], [SourceColumnName = "transaction_type", DestinationColumnName = "transaction_type"], [SourceColumnName = "high_level_claim_status", DestinationColumnName = "high_level_claim_status"], [SourceColumnName = "claim_status", DestinationColumnName = "claim_status"], [SourceColumnName = "approved_payment_amt", DestinationColumnName = "approved_payment_amt"], [SourceColumnName = "access_fee", DestinationColumnName = "access_fee"], [SourceColumnName = "claim_liab_amt", DestinationColumnName = "claim_liab_amt"], [SourceColumnName = "admin_amt", DestinationColumnName = "admin_amt"], [SourceColumnName = "net_liab_amt", DestinationColumnName = "net_liab_amt"], [SourceColumnName = "scenario", DestinationColumnName = "scenario"], [SourceColumnName = "report_name", DestinationColumnName = "report_name"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
 shared closed_claims = let
     Source = Sql.Database(Server_Id,DB_NAME),

@@ -1,9 +1,10 @@
-CREATE     VIEW silver.master_src_rpt as
+CREATE       VIEW silver.master_src_rpt as
 
 SELECT 
 
     COALESCE(r.[report_name], s.[report_name])             AS [report_name],
-    COALESCE(r.[accounting_period], s.[accounting_period]) AS [accounting_period],
+   -- COALESCE(r.[accounting_period], s.[accounting_period])
+    '09/30/2026' AS [accounting_period],
     COALESCE(r.[lob], s.[lob])                             AS [lob],
     COALESCE(r.[jurisdiction], s.[jurisdiction])           AS [jurisdiction],
 
