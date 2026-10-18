@@ -36,3 +36,4 @@ FROM (
     SELECT * FROM [silver].[roll_forwrad_variance]
 ) AS [combined_data];
 
+GO
