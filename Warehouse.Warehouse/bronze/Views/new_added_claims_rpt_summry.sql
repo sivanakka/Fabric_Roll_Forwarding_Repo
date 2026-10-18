@@ -1,4 +1,4 @@
-CREATE    VIEW [bronze].[new_added_claims_rpt_summry] AS
+CREATE      VIEW [bronze].[new_added_claims_rpt_summry] AS
 SELECT
     [report_name],
     [accounting_period],

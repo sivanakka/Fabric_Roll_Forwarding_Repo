@@ -58,7 +58,7 @@
           "scripts": [
             {
               "text": {
-                "value": "CREATE     VIEW [gold].[IH6] AS\r\n\r\nSELECT TOP (100) PERCENT\r\n\r\n\t CASE [report_name]\r\n    WHEN 'IH5P' THEN 1\r\n    WHEN 'IH2' THEN 2\r\n    WHEN 'misc_bucketB_src_rpt' THEN 3\r\n    WHEN 'IH7' THEN 4\r\n    WHEN 'IH3' THEN 5\r\n    WHEN 'misc_bucketA_src_rpt' THEN 6\r\n    WHEN 'IH5C' THEN 7\r\n    WHEN 'open_balance_cal' THEN 8\r\n    ELSE 9 END AS SORT_KEY,\r\n  *\r\nFROM (\r\n    SELECT\r\n      *\r\n    FROM [silver].[src_rpt_var]\r\n\r\n) AS combined_reports\r\nORDER BY SORT_KEY\r\n\r\nGO",
+                "value": "CREATE   OR ALTER VIEW [gold].[IH6] AS\n\n\n\nSELECT TOP (100) PERCENT\n\n\n\n\t CASE [report_name]\n\n    WHEN 'IH5P' THEN 1\n\n    WHEN 'IH2' THEN 2\n\n    WHEN 'misc_bucketB_src_rpt' THEN 3\n\n    WHEN 'IH7' THEN 4\n\n    WHEN 'IH3' THEN 5\n\n    WHEN 'misc_bucketA_src_rpt' THEN 6\n\n    WHEN 'IH5C' THEN 7\n\n    WHEN 'open_balance_cal' THEN 8\n\n    ELSE 9 END AS SORT_KEY,\n\n  *\n\nFROM (\n\n    SELECT\n\n      *\n\n    FROM [silver].[src_rpt_var]\n\n\n\n) AS combined_reports\n\nORDER BY SORT_KEY\n\n\n",
                 "type": "Expression"
               },
               "type": "Query"

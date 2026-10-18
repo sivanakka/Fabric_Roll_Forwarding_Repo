@@ -183,7 +183,7 @@
           "scripts": [
             {
               "text": {
-                "value": "CREATE    VIEW [bronze].[deleted_purged_claims_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "value": "CREATE    OR ALTER VIEW [bronze].[deleted_purged_claims_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
                 "type": "Expression"
               },
               "type": "Query"
@@ -229,7 +229,7 @@
           "scripts": [
             {
               "text": {
-                "value": "CREATE    VIEW [bronze].[gl_reported_ending_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "value": "CREATE  OR ALTER  VIEW [bronze].[gl_reported_ending_src_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_src]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
                 "type": "Expression"
               },
               "type": "Query"
@@ -413,7 +413,7 @@
           "scripts": [
             {
               "text": {
-                "value": "CREATE    VIEW [bronze].[deleted_purged_claims_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "value": "CREATE   OR ALTER VIEW [bronze].[deleted_purged_claims_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[deleted_purged_claims_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
                 "type": "Expression"
               },
               "type": "Query"
@@ -443,7 +443,7 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "deleted_purged_claims_src_summry_copy1",
+        "name": "deleted_purged_claims_rpt_summry",
         "dependsOn": [
           {
             "activity": "Balance_Sys_Rpt",
@@ -459,7 +459,7 @@
           "scripts": [
             {
               "text": {
-                "value": "CREATE    VIEW [bronze].[gl_reported_ending_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\nGO",
+                "value": "CREATE  OR ALTER  VIEW [bronze].[gl_reported_ending_rpt_summry] AS\nSELECT\n    [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction],\n    COUNT([claim_id])               AS [total_claims],\n    SUM([approved_payment_amt])     AS [total_approved_payment_amt],\n    SUM([access_fee])               AS [total_access_fee],\n    SUM([claim_liab_amt])           AS [total_claim_liab_amt],\n    SUM([admin_amt])                AS [total_admin_amt],\n    SUM([net_liab_amt])             AS [total_net_liab_amt]\nFROM [bronze].[gl_reported_ending_rpt]\nGROUP BY \n [report_name],\n    [accounting_period],\n    [lob],\n    [jurisdiction]\n",
                 "type": "Expression"
               },
               "type": "Query"

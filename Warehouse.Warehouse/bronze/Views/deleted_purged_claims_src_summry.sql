@@ -1,4 +1,4 @@
-CREATE    VIEW [bronze].[deleted_purged_claims_src_summry] AS
+CREATE      VIEW [bronze].[deleted_purged_claims_src_summry] AS
 SELECT
     [report_name],
     [accounting_period],

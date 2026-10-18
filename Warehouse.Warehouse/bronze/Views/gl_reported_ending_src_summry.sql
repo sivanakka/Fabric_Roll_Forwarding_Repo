@@ -1,4 +1,4 @@
-CREATE    VIEW [bronze].[gl_reported_ending_src_summry] AS
+CREATE     VIEW [bronze].[gl_reported_ending_src_summry] AS
 SELECT
     [report_name],
     [accounting_period],

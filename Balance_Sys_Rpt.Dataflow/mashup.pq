@@ -27,9 +27,10 @@ shared opening_claims = let
 }, "en-US"),
   Custom = Table.SelectRows(#"Changed column type with locale", each ([claim_id] <> "TOTAL")),
   #"Custom 1" = Table.AddColumn(#"Custom", "report_name", each "IH5P"),
-  #"Changed column type" = Table.TransformColumnTypes(#"Custom 1", {{"report_name", type text}})
+  #"Changed column type" = Table.TransformColumnTypes(#"Custom 1", {{"report_name", type text}}),
+  #"Filtered rows" = Table.SelectRows(#"Changed column type", each ([claim_id] <> "CLM-HEA-DC-10043"))
 in
-  #"Changed column type";
+  #"Filtered rows";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "new_added_claims_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "claim_id", DestinationColumnName = "claim_id"], [SourceColumnName = "policy_no", DestinationColumnName = "policy_no"], [SourceColumnName = "lob", DestinationColumnName = "lob"], [SourceColumnName = "jurisdiction", DestinationColumnName = "jurisdiction"], [SourceColumnName = "accounting_period", DestinationColumnName = "accounting_period"], [SourceColumnName = "transaction_date", DestinationColumnName = "transaction_date"], [SourceColumnName = "transaction_type", DestinationColumnName = "transaction_type"], [SourceColumnName = "high_level_claim_status", DestinationColumnName = "high_level_claim_status"], [SourceColumnName = "claim_status", DestinationColumnName = "claim_status"], [SourceColumnName = "approved_payment_amt", DestinationColumnName = "approved_payment_amt"], [SourceColumnName = "access_fee", DestinationColumnName = "access_fee"], [SourceColumnName = "claim_liab_amt", DestinationColumnName = "claim_liab_amt"], [SourceColumnName = "admin_amt", DestinationColumnName = "admin_amt"], [SourceColumnName = "net_liab_amt", DestinationColumnName = "net_liab_amt"], [SourceColumnName = "scenario", DestinationColumnName = "scenario"], [SourceColumnName = "report_name", DestinationColumnName = "report_name"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
 shared new_added_claims = let
   Source = AzureStorage.DataLake(Data_Lake_Path),
@@ -143,9 +144,10 @@ shared gl_reported_ending = let
 }, "en-US"),
   Custom = Table.SelectRows(#"Changed column type with locale", each ([claim_id] <> "TOTAL")),
   #"Custom 1" = Table.AddColumn(#"Custom", "report_name", each "IH5C"),
-  #"Changed column type" = Table.TransformColumnTypes(#"Custom 1", {{"report_name", type text}})
+  #"Changed column type" = Table.TransformColumnTypes(#"Custom 1", {{"report_name", type text}}),
+  #"Filtered rows" = Table.SelectRows(#"Changed column type", each ([claim_id] <> "CLM-HEA-DC-10041"))
 in
-  #"Changed column type";
+  #"Filtered rows";
 shared opening_claims_DataDestination = let
   Pattern = Fabric.Warehouse([CreateNavigationProperties = false, HierarchicalNavigation = true]),
   Navigation_1 = Pattern{[workspaceId = "."]}[Data],
