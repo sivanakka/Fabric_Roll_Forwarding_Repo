@@ -9,9 +9,9 @@
     </am:CreatedBy>
     <am:UpdatedBy>
       <am:Name>PBIRB</am:Name>
-      <am:Version>15.7.1820.75</am:Version>
+      <am:Version>15.7.1821.21</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-16T09:19:50.3991748Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-18T16:41:17.5346409Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -21,6 +21,7 @@
       <ConnectionProperties>
         <DataProvider>SQLAZURE</DataProvider>
         <ConnectString>Data Source=4sdk7eegcs4exhj4bfxjr3ab4u-jq24a6knbavuzaclibyo5sj26m.datawarehouse.fabric.microsoft.com;Initial Catalog=Warehouse;Authentication=ActiveDirectoryInteractive</ConnectString>
+        <Prompt>Specify a user name and password for data source DataSource2:</Prompt>
       </ConnectionProperties>
       <rd:DataSourceID>79792f78-a5ba-49ec-9afa-0dc054dcef5f</rd:DataSourceID>
     </DataSource>
@@ -61,11 +62,17 @@
         <Field Name="rpt_total_claims">
           <DataField>rpt_total_claims</DataField>
         </Field>
+        <Field Name="variance_total_claims">
+          <DataField>variance_total_claims</DataField>
+        </Field>
         <Field Name="src_net_liab_amt">
           <DataField>src_net_liab_amt</DataField>
         </Field>
         <Field Name="rpt_net_liab_amt">
           <DataField>rpt_net_liab_amt</DataField>
+        </Field>
+        <Field Name="variance_net_liab_amt">
+          <DataField>variance_net_liab_amt</DataField>
         </Field>
         <Field Name="src_approved_amt">
           <DataField>src_approved_amt</DataField>
@@ -73,11 +80,17 @@
         <Field Name="rpt_approved_amt">
           <DataField>rpt_approved_amt</DataField>
         </Field>
+        <Field Name="variance_approved_amt">
+          <DataField>variance_approved_amt</DataField>
+        </Field>
         <Field Name="src_access_fee">
           <DataField>src_access_fee</DataField>
         </Field>
         <Field Name="rpt_access_fee">
           <DataField>rpt_access_fee</DataField>
+        </Field>
+        <Field Name="variance_access_fee">
+          <DataField>variance_access_fee</DataField>
         </Field>
         <Field Name="src_claim_liab_amt">
           <DataField>src_claim_liab_amt</DataField>
@@ -85,26 +98,14 @@
         <Field Name="rpt_claim_liab_amt">
           <DataField>rpt_claim_liab_amt</DataField>
         </Field>
+        <Field Name="variance_claim_liab_amt">
+          <DataField>variance_claim_liab_amt</DataField>
+        </Field>
         <Field Name="src_admin_amt">
           <DataField>src_admin_amt</DataField>
         </Field>
         <Field Name="rpt_admin_amt">
           <DataField>rpt_admin_amt</DataField>
-        </Field>
-        <Field Name="variance_total_claims">
-          <DataField>variance_total_claims</DataField>
-        </Field>
-        <Field Name="variance_net_liab_amt">
-          <DataField>variance_net_liab_amt</DataField>
-        </Field>
-        <Field Name="variance_approved_amt">
-          <DataField>variance_approved_amt</DataField>
-        </Field>
-        <Field Name="variance_access_fee">
-          <DataField>variance_access_fee</DataField>
-        </Field>
-        <Field Name="variance_claim_liab_amt">
-          <DataField>variance_claim_liab_amt</DataField>
         </Field>
         <Field Name="variance_admin_amt">
           <DataField>variance_admin_amt</DataField>
@@ -195,27 +196,69 @@
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
-                <TablixColumn><Width>18mm</Width></TablixColumn>
-                <TablixColumn><Width>30.89mm</Width></TablixColumn>
-                <TablixColumn><Width>40.02834mm</Width></TablixColumn>
-                <TablixColumn><Width>40.555mm</Width></TablixColumn>
-                <TablixColumn><Width>43.00834mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
-                <TablixColumn><Width>47mm</Width></TablixColumn>
-                <TablixColumn><Width>37.51833mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
-                <TablixColumn><Width>47mm</Width></TablixColumn>
-                <TablixColumn><Width>47mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
-                <TablixColumn><Width>50.44499mm</Width></TablixColumn>
-                <TablixColumn><Width>38.66334mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
-                <TablixColumn><Width>53.84495mm</Width></TablixColumn>
-                <TablixColumn><Width>49.82336mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
-                <TablixColumn><Width>46.91835mm</Width></TablixColumn>
-                <TablixColumn><Width>36.54663mm</Width></TablixColumn>
-                <TablixColumn><Width>36mm</Width></TablixColumn>
+                <TablixColumn>
+                  <Width>18mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>30.89mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>40.02834mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>40.555mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>43.00834mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>47mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>37.51833mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>47mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>47mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>50.44499mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>38.66334mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>53.84495mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>49.82336mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>46.91835mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36.54663mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>36mm</Width>
+                </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
@@ -411,7 +454,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_total_claims"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR COUNT</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_total_claims">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR COUNT</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="hdr_src_net_liab_amt">
@@ -488,7 +567,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_net_liab_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR NET LIAB AMT</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_net_liab_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR NET LIAB AMT</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="hdr_src_approved_amt">
@@ -565,7 +680,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_approved_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR APPROVED AMT</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_approved_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR APPROVED AMT</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="hdr_src_access_fee">
@@ -642,7 +793,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_access_fee"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR ACCESS FEE</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_access_fee">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR ACCESS FEE</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="hdr_src_claim_liab_amt">
@@ -719,7 +906,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_claim_liab_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR CLAIM LIAB AMT</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_claim_liab_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR CLAIM LIAB AMT</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="hdr_src_admin_amt">
@@ -796,7 +1019,43 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="hdr_variance_admin_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>VAR ADMIN AMT</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Color>#ffffff</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#234567</Color><Style>Solid</Style></Border><BackgroundColor>#17324d</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="hdr_variance_admin_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>VAR ADMIN AMT</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#ffffff</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#234567</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#17324d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -997,7 +1256,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_total_claims"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_total_claims.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>#,##0</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_total_claims">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_total_claims.Value)</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,##0</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="src_net_liab_amt">
@@ -1078,7 +1375,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_net_liab_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_net_liab_amt.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);"-"</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_net_liab_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_net_liab_amt.Value)+0</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>$#,##0.00;($#,##0.00);</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="src_approved_amt">
@@ -1159,7 +1494,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_approved_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_approved_amt.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);"-"</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_approved_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_approved_amt.Value)+0</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>$#,##0.00;($#,##0.00);</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="src_access_fee">
@@ -1240,7 +1613,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_access_fee"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_access_fee.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);"-"</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_access_fee">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_access_fee.Value)+0</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>$#,##0.00;($#,##0.00);</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="src_claim_liab_amt">
@@ -1321,7 +1732,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_claim_liab_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_claim_liab_amt.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);"-"</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_claim_liab_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_claim_liab_amt.Value)+0</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>$#,##0.00;($#,##0.00);</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="src_admin_amt">
@@ -1402,7 +1851,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell><CellContents><Textbox Name="variance_admin_amt"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!variance_admin_amt.Value)</Value><Style><FontSize>8.5pt</FontSize><FontWeight>Bold</FontWeight><Format>$#,##0.00;($#,##0.00);"-"</Format><Color>#1e293b</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>#d9e2ec</Color><Style>Solid</Style></Border><BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor><TextAlign>Right</TextAlign><VerticalAlign>Middle</VerticalAlign><PaddingLeft>4pt</PaddingLeft><PaddingRight>4pt</PaddingRight><PaddingTop>3pt</PaddingTop><PaddingBottom>3pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="variance_admin_amt">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!variance_admin_amt.Value)+0</Value>
+                                  <Style>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>$#,##0.00;($#,##0.00);</Format>
+                                    <Color>#1e293b</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#d9e2ec</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "#f8fafc", "#ffffff")</BackgroundColor>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
@@ -1564,7 +2051,7 @@
             <Top>21.70722mm</Top>
             <Left>0mm</Left>
             <Height>14.5mm</Height>
-            <Width>675.44496mm</Width>
+            <Width>891.44497mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1615,7 +2102,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>675.44496mm</Width>
+      <Width>891.44497mm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>40cm</PageWidth>
